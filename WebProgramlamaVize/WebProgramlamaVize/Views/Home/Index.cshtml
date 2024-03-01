@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+    <partial name="_Slider"></partial> @*Partial View'dır. Slider'ın View dosyasını çağırır. Bize modüler bir yapı kazandırıyor.*@
+
+    @await Component.InvokeAsync("SonDuyurular") @*View Component'dir bu da aynı şekilde modüler olarak kullanılabir direkt olarak modella iletişime geçer *@
+
+    <partial name="_Etkinlikler"></partial>  @*etkinliklerin cshtml i*@
+
+    <partial name="_Haberler"></partial>   @* etkinliklerin cshtml i*@

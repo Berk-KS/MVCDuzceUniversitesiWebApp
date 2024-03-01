@@ -1,0 +1,48 @@
+﻿@model List<Duyuru>
+
+<!-- duyuru_başlangıcı  -->
+<div class="popular_program_area section__padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section_title text-center">
+                    <h3>Duyurular</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+            </div>
+        </div>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="row" style="margin-top: 40px;">
+                    <!-- inline css -->
+                    @foreach (var item in Model) //duyuru modelinin duyurular tablosundan her bir veriyi çağırır. Veriler değişkenlik gösterebileceği için var veri tipini kullandık
+                    {
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single__program">
+                                <div class="program_thumb">
+                                    <img src="@Html.DisplayFor(modelItem => item.duyuruGorsel)" alt=""> @*Tablodaki duyuru görsel verisini çağırır*@
+                                </div>
+                                <div class="program__content">
+                                    <span>Güncel</span>
+                                    <h4>@Html.DisplayFor(modelItem => item.duyuruBaslik)</h4>  @*başlık verisi için aynı şeyi yapar*@
+                                    <p>@Html.DisplayFor(modelItem => item.duyuruIcerik)</p>     @*içerik için aynısını yapar*@
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="course_all_btn text-center">
+                    <a href="Duyuru" class="boxed-btn4">Tüm Duyuruları Gör</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- duyuru_sonu -->

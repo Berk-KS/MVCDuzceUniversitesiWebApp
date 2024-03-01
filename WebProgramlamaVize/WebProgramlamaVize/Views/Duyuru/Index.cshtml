@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebProgramlamaVize.Models.Duyuru>
+
+@{
+    ViewData["Title"] = "Index";
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+
+        <!-- DUYURULAR BAŞLANGIÇ -->
+<div class="anasayfa-duyurular-kapsayici">
+    <h3 class="anasayfa-duyurular-baslik">DUYURULAR</h3>
+    <div class="anasayfa-duyurular-baslik-altcizgi"></div>
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model) {
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 mt-4">
+                    <div class="anasayfa-duyurular">
+                        <img class="anasayfa-duyurular-fotograf" src="@Html.DisplayFor(modelItem => item.duyuruGorsel)" alt="">
+                        <h3 class="anasayfa-duyurular-alt-baslik">@Html.DisplayFor(modelItem => item.duyuruBaslik)</h3>
+                        <span class="anasayfa-duyurular-aciklama">@Html.DisplayFor(modelItem => item.duyuruIcerik)</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="container">
+    @if (pager.TotalPages > 0)
+    {
+        <ul class="pagination justify-content-end mb-5">
+            @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+            {
+                <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
+                    <a class="page-link" asp-controller="Duyuru" asp-action="Index" asp-route-pg="@pge"> @pge </a>
+                </li>
+            }
+        </ul>
+    }
+</div>
+        <!-- DUYURULAR BİTİŞ -->
